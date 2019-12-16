@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         WorkFlowy Reclaim Chrome Back/Forward
 // @namespace    https://rawbytz.wordpress.com
-// @version      2.3
-// @description  Reclaim Chrome's history shortcuts (Alt+Left/Right), move WorkFlowy's zoom shortcuts to Alt+Up/Down.
+// @version      2.4
+// @description  Reclaim Browser history shortcuts (Alt+Left/Right), move WorkFlowy's zoom shortcuts to Alt+Up/Down.
 // @author       rawbytz
 // @match        https://workflowy.com/*
 // @match        https://beta.workflowy.com/*
-// @updateUrl    https://gist.github.com/rawbytz/67df2d838316d331ff1b25fb24e4cc25/raw/WorkFlowyReclaimChromeHistory.user.js
-// @downloadUrl  https://gist.github.com/rawbytz/67df2d838316d331ff1b25fb24e4cc25/raw/WorkFlowyReclaimChromeHistory.user.js
+// @updateUrl    https://github.com/rawbytz/reclaim-chrome-history/raw/master/reclaimChromeHistory.user.js
+// @downloadUrl  https://github.com/rawbytz/reclaim-chrome-history/raw/master/reclaimChromeHistory.user.js
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
