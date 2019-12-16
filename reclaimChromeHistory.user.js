@@ -21,15 +21,15 @@
         case "ArrowDown": // Alt+Down = zoom in
           WF.zoomIn(WF.focusedItem());
           break;
-          case "ArrowUp": // Alt+Up = zoom out
+        case "ArrowUp": // Alt+Up = zoom out
           WF.zoomOut();
           break;
-          case "ArrowLeft": // Alt+Left = Go Back in History
+        case "ArrowLeft": // Alt+Left = Go Back in History
           window.history.back();
           event.stopImmediatePropagation();
           event.preventDefault();
           break;
-          case "ArrowRight": // Alt+Right = Go Forward in History
+        case "ArrowRight": // Alt+Right = Go Forward in History
           window.history.forward();
           event.stopImmediatePropagation();
           event.preventDefault();
