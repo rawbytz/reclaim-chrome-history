@@ -7,6 +7,7 @@
   * _Alt+Right_ = **Forward in History** 
 * [Click here to install](https://github.com/rawbytz/reclaim-chrome-history/raw/master/reclaimChromeHistory.user.js) into your script manager.
 ### Version Notes
+- v2.6 (2020-10-25): Fix for zoom out loss of focus (WorkFlowy lazy load bug)
 - v2.4 (2019-12-16): Moved from Gist to repo
 - v2.3 (2019-02-27): Converted back to WorkFlowy's animated zoom/unzoom, because they fixed some focus issues.
 - v2.2 (2018-11-26): Added support for beta.workflowy.com
