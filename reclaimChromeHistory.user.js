@@ -16,9 +16,9 @@
   'use strict';
 
   function scrollToItem(item) {
-    const el = item.getElement();
-    if (el) { // IN DOM, scroll to it.
-      el.scrollIntoView(false);
+    const itemInDom = item.getElement();
+    if (itemInDom) { 
+      itemInDom.scrollIntoView({block: "center"});
       WF.editItemName(item);
       return
     } else { // NOT in DOM, scroll DOM projects until your get there.
