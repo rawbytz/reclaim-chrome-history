@@ -14,7 +14,7 @@
 
 (function () {
   'use strict';
-  // Fix for WorkFlowy lazy load bug on scroll out
+  // Fix for WorkFlowy lazy load bug on zoom out
   function scrollToItem(item) {
     const itemInDom = item.getElement();
     if (itemInDom) { 
