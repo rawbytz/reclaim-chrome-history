@@ -15,6 +15,19 @@
 (function () {
   'use strict';
 
+  function scrollToItem(item) {
+    const el = item.getElement();
+    if (el) { // IN DOM, scroll to it.
+      el.scrollIntoView(false);
+      WF.editItemName(item);
+      return
+    } else { // NOT in DOM, scroll DOM projects until your get there.
+      const domProjects = document.getElementsByClassName("project");
+      domProjects[domProjects.length - 1].scrollIntoView(false);
+      setTimeout(() => scrollToItem(item), 50);
+    }
+  }
+
   document.addEventListener("keydown", function (event) {
     if (event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
       switch (event.key) {
@@ -22,7 +35,11 @@
           WF.zoomIn(WF.focusedItem());
           break;
         case "ArrowUp": // Alt+Up = zoom out
+          const current = WF.currentItem();
           WF.zoomOut();
+          setTimeout(() => {
+            scrollToItem(current);
+          }, 200);
           break;
         case "ArrowLeft": // Alt+Left = Go Back in History
           window.history.back();
