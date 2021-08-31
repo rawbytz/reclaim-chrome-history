@@ -18,7 +18,7 @@
   function scrollToItem(item) {
     const itemInDom = item.getElement();
     if (itemInDom) { 
-      itemInDom.scrollIntoView({block: "center"});
+      itemInDom.scrollIntoView({block: "nearest"});
       WF.editItemName(item);
       return
     } else { // NOT in DOM, scroll DOM projects until your get there.
