@@ -12,7 +12,6 @@
 - v2.7 (2023-04-21): Add Alt+\[ and Alt+\] for history as workaround until WorkFlowy fixes issue.
 - v2.6 (2020-10-25): Add scroll to support when zooming out of long lists
 - v2.5 (2019-12-16): Tweak domains supported
-- v2.6 (2020-10-25): Fix for zoom out loss of focus (WorkFlowy lazy load bug)
 - v2.4 (2019-12-16): Moved from Gist to repo
 - v2.3 (2019-02-27): Converted back to WorkFlowy's animated zoom/unzoom, because they fixed some focus issues.
 - v2.2 (2018-11-26): Added support for beta.workflowy.com
