@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WorkFlowy Reclaim Chrome Back/Forward
 // @namespace    https://rawbytz.wordpress.com
-// @version      2.6
+// @version      2.7
 // @description  Reclaim Browser history shortcuts (Alt+Left/Right), move WorkFlowy's zoom shortcuts to Alt+Up/Down.
 // @author       rawbytz
 // @match        https://workflowy.com/*
@@ -47,6 +47,16 @@
           event.preventDefault();
           break;
         case "ArrowRight": // Alt+Right = Go Forward in History
+          window.history.forward();
+          event.stopImmediatePropagation();
+          event.preventDefault();
+          break;
+        case "[": // Alt+[ = Go Back in History
+          window.history.back();
+          event.stopImmediatePropagation();
+          event.preventDefault();
+          break;
+        case "]": // Alt+] = Go Forward in History
           window.history.forward();
           event.stopImmediatePropagation();
           event.preventDefault();
