@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WorkFlowy Reclaim Chrome Back/Forward
 // @namespace    https://rawbytz.wordpress.com
-// @version      2.7
+// @version      2.9
 // @description  Reclaim Browser history shortcuts (Alt+Left/Right), move WorkFlowy's zoom shortcuts to Alt+Up/Down.
 // @author       rawbytz
 // @match        https://workflowy.com/*
@@ -28,6 +28,19 @@
     }
   }
 
+  function getSearchParam() {
+    const search = WF.currentSearchQuery(); // returns null when no search
+    return search ? `?q=${encodeURIComponent(search)}`: "" 
+  }
+  
+  const getBaseUrl = item => item.isMainDocumentRoot() ? "/#" : item.getUrl(); //need to add # to avoid reload
+  
+  function setLocationKeepSearch(item) {
+    if (!item) return
+    location.href = getBaseUrl(item) + getSearchParam();
+    WF.editItemName(item.isMainDocumentRoot ? item.getVisibleChildren()[0] : item);
+    }
+  
   document.addEventListener("keydown", function (event) {
     if (event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
       switch (event.key) {
@@ -60,6 +73,19 @@
           window.history.forward();
           event.stopImmediatePropagation();
           event.preventDefault();
+          break;
+        default:
+          break;
+      }
+    }
+    // Ctrl+Alt keep search 
+    if (event.altKey && event.ctrlKey && !event.shiftKey && !event.metaKey) {
+      switch (event.key) {
+        case "ArrowDown": // Ctrl+Alt+Down = zoom in keep search
+          setLocationKeepSearch(WF.focusedItem());
+          break;
+        case "ArrowUp": // Ctrl+Alt+Up = zoom out keep search
+          setLocationKeepSearch(WF.currentItem().getParent());
           break;
         default:
           break;
