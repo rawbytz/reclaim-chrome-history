@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WorkFlowy Reclaim Chrome Back/Forward
 // @namespace    https://rawbytz.wordpress.com
-// @version      2.7
+// @version      2.9
 // @description  Reclaim Browser history shortcuts (Alt+Left/Right), move WorkFlowy's zoom shortcuts to Alt+Up/Down.
 // @author       rawbytz
 // @match        https://workflowy.com/*
@@ -67,3 +67,13 @@
     }
   });
 })();
+// [] need to adapt to zoomIn/zoomOut
+function navSibKeepSearch(prev) {
+  const c = WF.currentItem();
+  const q = WF.currentSearchQuery();
+  const nav = prev ? c.getPreviousVisibleSibling(true) : c.getNextVisibleSibling(true);
+  if (nav) {
+    const base = nav.getUrl();
+    location.href = q ? `${base}?q=${encodeURIComponent(q)}` : base;
+  }
+}
