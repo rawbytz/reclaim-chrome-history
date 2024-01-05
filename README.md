@@ -9,6 +9,7 @@
   * _Alt+\]_ = **Forward in History** (temporary workaround)
 * [Click here to install](https://github.com/rawbytz/reclaim-chrome-history/raw/master/reclaimChromeHistory.user.js) into your script manager.
 ### Version Notes
+- v2.9 (2024-01-05): Add Ctrl+Alt+up/down support for keep search active on unzoom/zoom.
 - v2.7 (2023-04-21): Add Alt+\[ and Alt+\] for history as workaround until WorkFlowy fixes issue.
 - v2.6 (2020-10-25): Add scroll to support when zooming out of long lists
 - v2.5 (2019-12-16): Tweak domains supported
