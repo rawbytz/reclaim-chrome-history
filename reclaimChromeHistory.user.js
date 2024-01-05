@@ -28,6 +28,19 @@
     }
   }
 
+  function getSearchParam() {
+    const search = WF.currentSearchQuery(); // returns null when no search
+    return search ? `?q=${encodeURIComponent(search)}`: "" 
+  }
+  
+  const getBaseUrl = item => item.isMainDocumentRoot() ? "/#" : item.getUrl(); //need to add # to avoid reload
+  
+  function setLocationKeepSearch(item) {
+    if (!item) return
+    location.href = getBaseUrl(item) + getSearchParam();
+    WF.editItemName(item.isMainDocumentRoot ? item.getVisibleChildren()[0] : item);
+    }
+  
   document.addEventListener("keydown", function (event) {
     if (event.altKey && !event.ctrlKey && !event.shiftKey && !event.metaKey) {
       switch (event.key) {
@@ -65,15 +78,18 @@
           break;
       }
     }
+    // Ctrl+Alt keep search 
+    if (event.altKey && event.ctrlKey && !event.shiftKey && !event.metaKey) {
+      switch (event.key) {
+        case "ArrowDown": // Ctrl+Alt+Down = zoom in keep search
+          setLocationKeepSearch(WF.focusedItem());
+          break;
+        case "ArrowUp": // Ctrl+Alt+Up = zoom out keep search
+          setLocationKeepSearch(WF.currentItem().getParent());
+          break;
+        default:
+          break;
+      }
+    }
   });
 })();
-// [] need to adapt to zoomIn/zoomOut
-function navSibKeepSearch(prev) {
-  const c = WF.currentItem();
-  const q = WF.currentSearchQuery();
-  const nav = prev ? c.getPreviousVisibleSibling(true) : c.getNextVisibleSibling(true);
-  if (nav) {
-    const base = nav.getUrl();
-    location.href = q ? `${base}?q=${encodeURIComponent(q)}` : base;
-  }
-}
